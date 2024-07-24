@@ -1,0 +1,7 @@
+{
+    "server": "sql-srv-res.database.windows.net",
+    "port": 1433,
+    "user": "Bramplatier",
+    "password": "Brapla_51",
+    "database": "sqlres"
+}

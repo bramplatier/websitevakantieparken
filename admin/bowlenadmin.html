@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bowling Reservation Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+    header {
+      background: #35424a;
+      color: #ffffff;
+      padding-top: 30px;
+      min-height: 70px;
+      border-bottom: #e8491d 3px solid;
+    }
+    header a {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    header ul {
+      padding: 0;
+      list-style: none;
+    }
+    header li {
+      float: left;
+      display: inline;
+      padding: 0 20px 0 20px;
+    }
+    header #branding {
+      float: left;
+    }
+    header #branding h1 {
+      margin: 0;
+    }
+    header nav {
+      float: right;
+      margin-top: 10px;
+    }
+    header .highlight, header .current a {
+      color: #e8491d;
+      font-weight: bold;
+    }
+    header a:hover {
+      color: #cccccc;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      margin: 20px 0;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #dddddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #35424a;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <h1>Bowling Reservation Dashboard</h1>
+      </div>
+      <nav>
+        <ul>
+          <li class="current"><a href="/">Home</a></li>
+          <li><a href="/carbonfootprint">Carbonfootprint</a></li>
+          <li><a href="/dashboard">Dash-Reservering</a></li>
+          <li><a href="/parken">Dash-bowlen</a></li>
+          <li><a href="/contact">Dash-golf</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2>Bookings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone Number</th>
+          <th>Booking Date</th>
+          <th>Booking Length</th>
+          <th>Booking Time</th>
+          <th>Num Adults</th>
+          <th>Num Children</th>
+          <th>Promo Code</th>
+          <th>Total Cost</th>
+        </tr>
+      </thead>
+      <tbody id="bookingTableBody">
+        <!-- Rows will be inserted by JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var dataContainer = document.getElementById('dataContainer');
+      var bookings = JSON.parse(dataContainer.getAttribute('data-bookings'));
+      var tableBody = document.getElementById('bookingTableBody');
+
+      bookings.forEach(function (booking) {
+        var row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${booking.FirstName}</td>
+          <td>${booking.LastName}</td>
+          <td>${booking.PhoneNumber}</td>
+          <td>${booking.BookingDate}</td>
+          <td>${booking.BookingLength}</td>
+          <td>${booking.BookingTime}</td>
+          <td>${booking.NumAdults}</td>
+          <td>${booking.NumChildren}</td>
+          <td>${booking.PromoCode}</td>
+          <td>${booking.TotalCost}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    });
+  </script>
+</body>
+</html>

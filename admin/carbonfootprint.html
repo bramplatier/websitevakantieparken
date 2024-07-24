@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="UTF-8">
+  <title>Vakantiepark Carbon Footprint Dashboard</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Carbon Footprint Dashboard">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Airspace Template v1.0">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/plugins/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/plugins/animate-css/animate.css">
+  <link rel="stylesheet" href="/plugins/magnific-popup/magnific-popup.css">
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .table-responsive {
+      margin-top: 20px;
+    }
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #dee2e6;
+    }
+    .table tbody tr {
+      transition: background-color 0.2s;
+    }
+    .table tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+
+<body id="body">
+
+<!-- Header Start -->
+<header class="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <nav class="navbar navbar-expand-lg p-0">
+          <a class="navbar-brand" href="index.html">
+            <img src="/images/logo.png" alt="Logo" style="height: 30px;">
+          </a>
+  
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="ion-android-menu"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse ml-auto" id="navbarsExample09">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/admin/carbonfootprint">Carbonfootprint</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/admin/dashboard">Dash-Reservering</a>
+              </li>
+              <li class="nav-item @@parken">
+                <a class="nav-link" href="/admin/bowlenadmin" style="text-decoration: line-through;">Dash-bowlen</a>
+              </li>
+              <li class="nav-item @@contact">
+                <a class="nav-link" href="contact" style="text-decoration: line-through;">Dash-golf</a>
+              </li>
+            </ul>
+            
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="page-title bg-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block">
+          <h1>Carbon Footprint Dashboard</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="data-overview-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block">
+          <h2>Data Overview</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered" id="data-table">
+              <thead>
+                <tr>
+                  <th>Park Name</th>
+                  <th>Date</th>
+                  <th>Electricity Usage</th>
+                  <th>Gas Usage</th>
+                  <th>Water Usage</th>
+                  <th>Temperature</th>
+                </tr>
+              </thead>
+              <tbody id="data-table-body">
+                <!-- Data will be inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Start -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="footer-manu">
+          <ul>
+            <li><a href="parken">Onze Parken</a></li>
+            <li><a href="contact">Contact</a></li>
+          </ul>
+        </div>
+        <p class="copyright mb-0">Auteursrecht <script>document.write(new Date().getFullYear())</script> &copy; Ontworpen en ontwikkeld door <a
+            href="">Bunk-IT</a>. <br> Alle rechten voorbehouden.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<div id="scroll-to-top" class="scroll-to-top">
+  <span class="icon ion-ios-arrow-up"></span>
+</div>
+
+<!-- Essential Scripts -->
+
+<!-- Main jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 3.1 -->
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- slick Carousel -->
+<script src="/plugins/slick/slick.min.js"></script>
+<!-- magnific popup -->
+<script src="/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<!-- filter -->
+<script src="/plugins/shuffle/shuffle.min.js"></script>
+<!-- SyoTimer -->
+<script src="/plugins/SyoTimer/jquery.syotimer.min.js"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+<script src="/plugins/google-map/map.js"></script>
+
+<script src="/js/script.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const usageData = JSON.parse('{{.UsageDataJSON}}');
+      const tableBody = document.getElementById("data-table-body");
+
+      usageData.forEach(data => {
+          const row = document.createElement("tr");
+
+          const cellParkName = document.createElement("td");
+          cellParkName.textContent = data.park_name;
+          row.appendChild(cellParkName);
+
+          const cellDatum = document.createElement("td");
+          cellDatum.textContent = data.datum;
+          row.appendChild(cellDatum);
+
+          const cellElectricityUsage = document.createElement("td");
+          cellElectricityUsage.textContent = `${data.electricity_usage} kWh`;
+          row.appendChild(cellElectricityUsage);
+
+          const cellGasUsage = document.createElement("td");
+          cellGasUsage.textContent = `${data.gas_usage} m³`;
+          row.appendChild(cellGasUsage);
+
+          const cellWaterUsage = document.createElement("td");
+          cellWaterUsage.textContent = `${data.water_usage} m³`;
+          row.appendChild(cellWaterUsage);
+
+          const cellTemperature = document.createElement("td");
+          cellTemperature.textContent = `${data.temperature} °C`;
+          row.appendChild(cellTemperature);
+
+          tableBody.appendChild(row);
+      });
+  });
+</script>
+</body>
+</html>

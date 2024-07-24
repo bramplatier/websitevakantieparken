@@ -1,0 +1,32 @@
+services:
+
+  api:
+    container_name: bramp-api
+    build: ./frontend
+    ports:
+      - "8080:8080" # frontend
+    environment:
+      DB_USER: "root"
+      DB_PASSWORD: ""
+      DB_HOST: "db"
+      DB_PORT: "3306"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    container_name: bram-db
+    image: "mysql:latest"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "holiday"
+      MYSQL_USER: "bram"
+      MYSQL_PASSWORD: "bramp"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10

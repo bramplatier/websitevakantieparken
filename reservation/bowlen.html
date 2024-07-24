@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fonteyn Vakantieparken</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Creative Agency Bootstrap Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Airspace Template v1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="/plugins/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/plugins/animate-css/animate.css">
+  <link rel="stylesheet" href="/plugins/magnific-popup/magnific-popup.css">
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/styles/bowlen.css">
+</head>
+<body id="body">
+<header class="navigation">
+	<div class="container">
+	  <div class="row">
+		<div class="col-lg-12">
+		  <nav class="navbar navbar-expand-lg p-0">
+			<a class="navbar-brand" href="index">
+			  <img src="/images/logo.png" alt="Logo" style="height: 30px;">
+			</a>
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="ion-android-menu"></span>
+			</button>
+			<div class="collapse navbar-collapse ml-auto" id="navbarsExample09">
+			  <ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+				  <a class="nav-link" href="index">Home</a>
+				</li>
+				<li class="nav-item @@parken">
+				  <a class="nav-link" href="parken">Parken</a>
+				</li>
+				<li class="nav-item @@restaurant">
+				  <a class="nav-link" href="restaurant.html">Restaurant</a>
+				</li>
+			  </ul>
+			</div>
+      <div class="user-menu">
+        <img src="/images/avater.jpg" alt="User Menu" class="profile-picture" id="user-icon">
+        <div class="user-menu-dropdown" id="user-dropdown">
+            <ul>
+                <li><a href="#change-password">Wachtwoord wijzigen</a></li>
+                <li><a href="#" id="logout-link">Uitloggen</a></li>
+
+            </ul>
+        </div>
+    </div>
+		  </nav>
+		</div>
+	  </div>
+	</div>
+</header>
+
+<section class="page-title bg-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block">
+          <h1>Contacteer ons</h1>
+          <p>Fonteyn vakantieparken staat je graag te woord</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- contact form start -->
+<div class="container">
+  <div class="booking-form-container">
+      <h2>Boek nu je bowling ervaring!</h2>
+      <form id="bowlingBookingForm" action="/submit-bowling" method="POST">
+          <label for="firstName">Voornaam:</label>
+          <input type="text" id="firstName" name="firstName" required>
+          <label for="lastName">Achternaam:</label>
+          <input type="text" id="lastName" name="lastName" required>
+          <label for="phoneNumber">Telefoonnummer:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required>
+          <label for="bookingDate">Datum:</label>
+          <input type="date" id="bookingDate" name="bookingDate" required>
+          <label for="bookingLength">Lengte van boeking:</label>
+          <select id="bookingLength" name="bookingLength" required>
+              <option value="">Selecteer duur</option>
+              <option value="1">1 uur</option>
+              <option value="2">2 uur</option>
+          </select>
+          <label for="bookingTime">Tijd:</label>
+          <select id="bookingTime" name="bookingTime" required></select>
+          <label for="numAdults">Aantal volwassenen:</label>
+          <input type="number" id="numAdults" name="numAdults" min="0" value="0" required>
+          <label for="numChildren">Aantal kinderen:</label>
+          <input type="number" id="numChildren" name="numChildren" min="0" value="0" required>
+          <label for="promoCode">Promocode (optioneel):</label>
+          <input type="text" id="promoCode" name="promoCode">
+          <div class="total-cost">Totale Kosten: $<span id="totalCost">0.00</span></div>
+          <input type="hidden" id="totalCostInput" name="totalCost" value="0.00">
+          <button type="submit">Boek Nu</button>
+      </form>
+  </div>
+</div>
+
+<div id="changePasswordModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="changePasswordForm" action="/change-password" method="POST">
+      <label for="oldPassword">Oud wachtwoord:</label>
+      <div class="password-container">
+        <input type="password" id="oldPassword" name="oldPassword" required>
+        <img src="/images/eye.png" class="toggle-password" toggle="#oldPassword" alt="Show/Hide Password">
+      </div>
+      
+      <label for="newPassword">Nieuw wachtwoord:</label>
+      <div class="password-container">
+        <input type="password" id="newPassword" name="newPassword" required>
+        <img src="/images/eye.png" class="toggle-password" toggle="#newPassword" alt="Show/Hide Password">
+      </div>
+      
+      <label for="confirmPassword">Bevestig nieuw wachtwoord:</label>
+      <div class="password-container">
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <img src="/images/eye.png" class="toggle-password" toggle="#confirmPassword" alt="Show/Hide Password">
+      </div>
+      
+      <button type="submit">Wijzig Wachtwoord</button>
+    </form>
+    <div id="messageContainer"></div>
+  </div>
+</div>
+
+
+
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="footer-manu">
+          <ul>
+            <li><a href="parken">Onze Parken</a></li>
+            <li><a href="contact">Contact</a></li>
+          </ul>
+				</div>
+				<p class="copyright mb-0">Copyright <script>document.write(new Date().getFullYear())</script> &copy; Designed & Developed by <a
+						href="">Bunk-IT</a>. <br> All rights reserved.
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<div id="scroll-to-top" class="scroll-to-top">
+	<span class="icon ion-ios-arrow-up"></span>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="/plugins/slick/slick.min.js"></script>
+<script src="/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/plugins/shuffle/shuffle.min.js"></script>
+<script src="/plugins/SyoTimer/jquery.syotimer.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+<script src="/plugins/google-map/map.js"></script>
+<script src="frontend/js/bowlen.js"></script>
+<script src="frontend/js/script.js"></script>
+<script src="frontend/js/server.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="icon" href="styles/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/login.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <main>
+        <div class="left-side"></div>
+        <div class="right-side">
+            <form name="loginForm" action="/login" method="POST">
+                <!-- Placeholder for login message -->
+                <div id="login-message"></div>
+                <label for="email">Email</label>
+                <input type="email" placeholder="Enter Email" name="email" required/>
+                <label for="password">Password</label>
+                <input type="password" placeholder="Enter Password" name="password" required/>
+                    <div class="error-message">
+                        {{if .}}
+                            <div class="error-message">{{.ErrorMessage}}</div>
+                        {{end}}
+                    </div>
+                <button type="submit" value="Login" name="submit" class="login-btn">Log In</button>
+                <br>
+                <div class="links">
+                    <a href="/">Back to homepage</a>
+                    <a href="register">Do not have an account?</a>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
